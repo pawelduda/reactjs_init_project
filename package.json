@@ -1,0 +1,19 @@
+{
+  "name": "reactjs_init_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawelduda/reactjs_init_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawelduda/reactjs_init_project/issues"
+  },
+  "homepage": "https://github.com/pawelduda/reactjs_init_project#readme"
+}
