@@ -1,17 +1,23 @@
 import React from 'react'
 import axios from 'axios'
+import { debounce } from 'throttle-debounce'
 
 export default class SearchInput extends React.Component {
   constructor () {
     super()
 
     this.handleChange = this.handleChange.bind(this)
+    this.getSearchResultsNumber = debounce(500, this.getSearchResultsNumber)
     this.ajaxUrl = this.ajaxUrl.bind(this)
   }
 
   handleChange (e) {
+    this.getSearchResultsNumber(e.target.value)
+  }
+
+  getSearchResultsNumber (searchQuery) {
     axios
-      .get(this.ajaxUrl(e.target.value))
+      .get(this.ajaxUrl(searchQuery))
       .then(function (response) {
         console.log(response.data.searchInformation.formattedTotalResults)
       })
