@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { debounce } from 'throttle-debounce'
 
 import SearchInput from '../components/search/SearchInput.jsx'
 import SearchResultsCounter from '../components/search/SearchResultsCounter.jsx'
 
-export default class SearchContainer extends React.Component {
+export default class SearchContainer extends Component {
   constructor () {
     super()
 
     this.state = {
       searchResultsMessage: '',
+      searchResultsCount: 0,
       error: false
     }
 
@@ -21,7 +22,8 @@ export default class SearchContainer extends React.Component {
     if (searchQuery.length < 3) {
       this.setState({
         error: false,
-        searchResultsMessage: ''
+        searchResultsMessage: '',
+        searchResultsCount: 0
       })
 
       return
@@ -29,7 +31,8 @@ export default class SearchContainer extends React.Component {
 
     this.setState({
       error: false,
-      searchResultsMessage: '...'
+      searchResultsMessage: '...',
+      searchResultsCount: 0
     })
 
     axios
