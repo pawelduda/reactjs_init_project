@@ -10,19 +10,48 @@ export default class SearchContainer extends React.Component {
     super()
 
     this.state = {
-      searchResultsCount: undefined
+      searchResultsMessage: '',
+      error: false
     }
 
     this.onUserInput = debounce(500, this.onUserInput.bind(this))
   }
 
   onUserInput (searchQuery) {
+    if (searchQuery.length < 3) {
+      this.setState({
+        error: false,
+        searchResultsMessage: ''
+      })
+
+      return
+    }
+
+    this.setState({
+      error: false,
+      searchResultsMessage: '...'
+    })
+
     axios
       .get(this.ajaxUrl(searchQuery))
       .then((response) => {
         this.setState({
-          searchResultsCount: response.data.searchInformation.formattedTotalResults
+          error: false,
+          searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`
         })
+      })
+      .catch((response) => {
+        if (response.status === 403) {
+          this.setState({
+            error: true,
+            searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
+          })
+        } else {
+          this.setState({
+            error: true,
+            searchResultsMessage: 'An error occurred. Try again later.'
+          })
+        }
       })
   }
 
@@ -35,7 +64,9 @@ export default class SearchContainer extends React.Component {
       <div className='jumbotron'>
         <div className='container'>
           <SearchInput onUserInput={this.onUserInput} />
-          <SearchResultsCounter searchResultsCount={this.state.searchResultsCount} />
+          <SearchResultsCounter
+            error={this.state.error}
+            searchResultsMessage={this.state.searchResultsMessage} />
         </div>
       </div>
     )
