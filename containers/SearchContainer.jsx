@@ -10,54 +10,55 @@ export default class SearchContainer extends Component {
   constructor () {
     super()
 
-    this.state = {
+    this.defaultState = {
       searchResultsMessage: '',
       searchResultsCount: 0,
       error: false
     }
+    this.state = this.defaultState
 
     this.onUserInput = debounce(500, this.onUserInput.bind(this))
   }
 
   onUserInput (searchQuery) {
     if (searchQuery.length < 3) {
-      this.setState({
-        error: false,
-        searchResultsMessage: '',
-        searchResultsCount: 0
-      })
-
+      this.setState(this.defaultState)
       return
     }
 
-    this.setState({
-      error: false,
-      searchResultsMessage: '...',
-      searchResultsCount: 0
-    })
+    this.setState(
+      ...this.defaultState, {
+        searchResultsMessage: '...'
+      }
+    )
 
     axios
       .get(this.ajaxUrl(searchQuery))
       .then((response) => {
-        this.setState({
-          error: false,
-          searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`,
-          searchResultsCount: response.data.searchInformation.formattedTotalResults
-        })
+        let searchResultsCount = response.data.searchInformation.formattedTotalResults
+
+        this.setState(
+          ...this.defaultState, {
+            searchResultsMessage: `Search results count: ${searchResultsCount}`,
+            searchResultsCount: searchResultsCount
+          }
+        )
       })
       .catch((response) => {
         if (response.status === 403) {
-          this.setState({
-            error: true,
-            searchResultsMessage: 'Google API daily limit exceeded. Try again later.',
-            searchResultsCount: 0
-          })
+          this.setState(
+            ...this.defaultState, {
+              error: true,
+              searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
+            }
+          )
         } else {
-          this.setState({
-            error: true,
-            searchResultsMessage: 'An error occurred. Try again later.',
-            searchResultsCount: 0
-          })
+          this.setState(
+            ...this.defaultState, {
+              error: true,
+              searchResultsMessage: 'An error occurred. Try again later.'
+            }
+          )
         }
       })
   }
