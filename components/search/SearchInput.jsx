@@ -15,7 +15,7 @@ export default class SearchInput extends Component {
     return (
       <div className='form-group'>
         <label for='searchPhrase' className='control-label'>
-          Search for a phrase
+          Search for a phrase (at least 3 characters)
         </label>
         <input onChange={this.handleUserInput}
           name='searchPhrase' type='text'
