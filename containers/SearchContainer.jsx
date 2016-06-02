@@ -67,7 +67,7 @@ export default class SearchContainer extends Component {
   }
 
   ajaxUrl (searchQuery) {
-    return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA7w4pR_1tc8DG3S3qzFplJEp9CAyjF1MY&cx=015538004234392094052:bcfx59rb48y&q=${searchQuery}`
+    return `https://www.googleapis.com/customsearch/v1?key=AIzaSyDcQO-ogNX2SPtTCmmRpvBKuvMErrEsouk&cx=015538004234392094052:bcfx59rb48y&q=${searchQuery}`
   }
 
   render () {
