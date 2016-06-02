@@ -83,15 +83,10 @@ export default class SearchContainer extends Component {
             <SearchInput onUserInput={this.onUserInput} />
             <SearchResultsCounter
               error={this.state.error}
-              searchResultsMessage={this.state.searchResultsMessage}
-            />
+              searchResultsMessage={this.state.searchResultsMessage} />
           </div>
         </div>
-        {
-          this.state.searchResultsCount > 0
-            ? <PricingContainer searchResultsCount={this.state.searchResultsCount} />
-            : ''
-        }
+        <PricingContainer searchResultsCount={this.state.searchResultsCount} />
       </div>
     )
   }
