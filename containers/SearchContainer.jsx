@@ -13,13 +13,10 @@ export default class SearchContainer extends React.Component {
       searchResultsCount: undefined
     }
 
-    this.onUserInput = this.onUserInput.bind(this)
-    this.onUserInput = debounce(500, this.onUserInput)
-    // this.onUserInput = this.onUserInput.bind(this)
+    this.onUserInput = debounce(500, this.onUserInput.bind(this))
   }
 
   onUserInput (searchQuery) {
-    console.log('test')
     axios
       .get(this.ajaxUrl(searchQuery))
       .then((response) => {

@@ -1,6 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import { debounce } from 'throttle-debounce'
 
 export default class SearchInput extends React.Component {
   constructor () {
@@ -20,7 +18,6 @@ export default class SearchInput extends React.Component {
           Search for a phrase
         </label>
         <input onChange={this.handleUserInput}
-          ref='searchPhraseInput'
           name='searchPhrase' type='text'
           className='form-control input-lg'
           placeholder='Start typing to search...' />
