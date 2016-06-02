@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 
-export default class SearchResultsCounter extends React.Component {
+export default class SearchResultsCounter extends Component {
   render () {
     return (
       <div>

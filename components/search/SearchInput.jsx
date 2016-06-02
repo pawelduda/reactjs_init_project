@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default class SearchInput extends React.Component {
+export default class SearchInput extends Component {
   constructor () {
     super()
 
