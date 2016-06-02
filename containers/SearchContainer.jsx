@@ -77,7 +77,11 @@ export default class SearchContainer extends Component {
               searchResultsMessage={this.state.searchResultsMessage} />
           </div>
         </div>
-        <PricingContainer searchResultsCount={this.state.searchResultsCount} />
+        {
+          this.state.searchResultsCount > 0
+            ? <PricingContainer searchResultsCount={this.state.searchResultsCount} />
+            : ''
+        }
       </div>
     )
   }
