@@ -13,7 +13,7 @@ export default class PricingLevel extends Component {
 
   render () {
     return (
-      <button className="btn btn-primary btn-lg btn-block">
+      <button className='btn btn-primary btn-lg btn-block'>
         ${this.price()}
       </button>
     )
