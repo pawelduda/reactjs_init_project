@@ -4,6 +4,7 @@ import { debounce } from 'throttle-debounce'
 
 import SearchInput from '../components/search/SearchInput.jsx'
 import SearchResultsCounter from '../components/search/SearchResultsCounter.jsx'
+import PricingContainer from '../containers/PricingContainer.jsx'
 
 export default class SearchContainer extends Component {
   constructor () {
@@ -44,7 +45,8 @@ export default class SearchContainer extends Component {
   handleSearchSuccess (response) {
     this.setState({
       error: false,
-      searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`
+      searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`,
+      searchResultsCount: response.data.searchInformation.formattedTotalResults
     })
   }
 
@@ -52,12 +54,14 @@ export default class SearchContainer extends Component {
     if (response.status === 403) {
       this.setState({
         error: true,
-        searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
+        searchResultsMessage: 'Google API daily limit exceeded. Try again later.',
+        searchResultsCount: 0
       })
     } else {
       this.setState({
         error: true,
-        searchResultsMessage: 'An error occurred. Try again later.'
+        searchResultsMessage: 'An error occurred. Try again later.',
+        searchResultsCount: 0
       })
     }
   }
@@ -68,14 +72,17 @@ export default class SearchContainer extends Component {
 
   render () {
     return (
-      <div className='jumbotron'>
-        <div className='container'>
-          <SearchInput onUserInput={this.onUserInput} />
-          <SearchResultsCounter
-            error={this.state.error}
-            searchResultsMessage={this.state.searchResultsMessage}
-          />
+      <div>
+        <div className='jumbotron'>
+          <div className='container'>
+            <SearchInput onUserInput={this.onUserInput} />
+            <SearchResultsCounter
+              error={this.state.error}
+              searchResultsMessage={this.state.searchResultsMessage}
+            />
+          </div>
         </div>
+        <PricingContainer searchResultsCount={this.state.searchResultsCount} />
       </div>
     )
   }
