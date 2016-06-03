@@ -40,7 +40,7 @@ export default class SearchContainer extends Component {
         this.setState(
           ...this.defaultState, {
             searchResultsMessage: `Search results count: ${searchResultsCount}`,
-            searchResultsCount: searchResultsCount
+            searchResultsCount: Number(searchResultsCount.replace(/,/g, ''))
           }
         )
       })
