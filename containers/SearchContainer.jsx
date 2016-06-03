@@ -54,7 +54,8 @@ export default class SearchContainer extends Component {
       this.setState(
         ...this.defaultState, {
           error: true,
-          searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
+          searchResultsMessage: 'Google API daily limit exceeded. Try again later.',
+          searchResultsCount: Number(searchResultsCount.replace(/,/g, ''))
         }
       )
     } else {
