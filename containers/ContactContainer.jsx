@@ -6,7 +6,7 @@ export default class ContactContainer extends Component {
   render () {
     return (
       <div>
-        <ContactModal />
+        <ContactModal selectedPricing={this.props.selectedPricing} />
       </div>
     )
   }

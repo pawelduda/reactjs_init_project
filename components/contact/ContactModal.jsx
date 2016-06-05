@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import BootstrapInput from './BootstrapInput.jsx'
 
@@ -11,7 +11,7 @@ export default class ContactModal extends Component {
             <div className='modal-body'>
               <form>
                 <h4>
-                  You have chosen plan for [amount].
+                  You have chosen plan for <strong>{this.props.selectedPricing}</strong>.
                   Please provide your contact data and we will contact you shortly.
                 </h4>
 
@@ -49,4 +49,8 @@ export default class ContactModal extends Component {
       </div>
     )
   }
+}
+
+ContactModal.PropTypes = {
+  selectedPricing: PropTypes.string.isRequired
 }

@@ -4,10 +4,6 @@ import SearchInput from '../components/search/SearchInput.jsx'
 import SearchResultsCounter from '../components/search/SearchResultsCounter.jsx'
 
 export default class SearchContainer extends Component {
-  constructor () {
-    super()
-  }
-
   render () {
     return (
       <div>
