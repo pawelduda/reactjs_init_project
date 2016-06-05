@@ -27,6 +27,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
     "axios": "^0.11.1",
     "bootstrap": "^3.3.6",
     "throttle-debounce": "^1.0.1"

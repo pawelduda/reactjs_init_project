@@ -1,39 +1,23 @@
-import React from 'react'
-import axios from 'axios'
-import { debounce } from 'throttle-debounce'
+import React, { Component } from 'react'
 
-export default class SearchInput extends React.Component {
+export default class SearchInput extends Component {
   constructor () {
     super()
 
-    this.handleChange = this.handleChange.bind(this)
-    this.getSearchResultsNumber = debounce(500, this.getSearchResultsNumber)
-    this.ajaxUrl = this.ajaxUrl.bind(this)
+    this.handleUserInput = this.handleUserInput.bind(this)
   }
 
-  handleChange (e) {
-    this.getSearchResultsNumber(e.target.value)
-  }
-
-  getSearchResultsNumber (searchQuery) {
-    axios
-      .get(this.ajaxUrl(searchQuery))
-      .then(function (response) {
-        console.log(response.data.searchInformation.formattedTotalResults)
-      })
-  }
-
-  ajaxUrl (searchQuery) {
-    return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA7w4pR_1tc8DG3S3qzFplJEp9CAyjF1MY&cx=015538004234392094052:bcfx59rb48y&q=${searchQuery}`
+  handleUserInput (event) {
+    this.props.onUserInput(event.target.value)
   }
 
   render () {
     return (
       <div className='form-group'>
         <label for='searchPhrase' className='control-label'>
-          Search for a phrase
+          Search for a phrase (at least 3 characters)
         </label>
-        <input onChange={this.handleChange}
+        <input onChange={this.handleUserInput}
           name='searchPhrase' type='text'
           className='form-control input-lg'
           placeholder='Start typing to search...' />
