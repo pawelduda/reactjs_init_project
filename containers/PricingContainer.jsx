@@ -4,7 +4,8 @@ import PricingLevel from '../components/pricing/PricingLevel.jsx'
 
 export default class PricingContainer extends Component {
   static propTypes = {
-    searchResultsCount: PropTypes.number.isRequired
+    searchResultsCount: PropTypes.number.isRequired,
+    onPricingLevelSelect: PropTypes.func.isRequired
   }
 
   render () {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class BootstrapInput extends Component {
   render () {
@@ -9,4 +9,10 @@ export default class BootstrapInput extends Component {
       </div>
     )
   }
+}
+
+BootstrapInput.PropTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 }

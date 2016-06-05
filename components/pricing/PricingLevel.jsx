@@ -4,7 +4,8 @@ import accounting from 'accounting'
 export default class PricingLevel extends Component {
   static propTypes = {
     searchResultsCount: PropTypes.number.isRequired,
-    pricingMultiplier: PropTypes.number.isRequired
+    pricingMultiplier: PropTypes.number.isRequired,
+    onPricingLevelSelect: PropTypes.func.isRequired
   }
 
   constructor () {
