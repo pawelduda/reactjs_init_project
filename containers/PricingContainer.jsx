@@ -16,13 +16,22 @@ export default class PricingContainer extends Component {
           </div>
           <div className='row text-center margin-top-15'>
             <div className='col-md-4 margin-top-15'>
-              <PricingLevel searchResultsCount={this.props.searchResultsCount} pricingMultiplier={0.001} />
+              <PricingLevel
+                searchResultsCount={this.props.searchResultsCount}
+                pricingMultiplier={0.001}
+                onPricingLevelSelect={this.props.onPricingLevelSelect} />
             </div>
             <div className='col-md-4 margin-top-15'>
-              <PricingLevel searchResultsCount={this.props.searchResultsCount} pricingMultiplier={0.003} />
+              <PricingLevel
+                searchResultsCount={this.props.searchResultsCount}
+                pricingMultiplier={0.003}
+                onPricingLevelSelect={this.props.onPricingLevelSelect} />
             </div>
             <div className='col-md-4 margin-top-15'>
-              <PricingLevel searchResultsCount={this.props.searchResultsCount} pricingMultiplier={0.004} />
+              <PricingLevel
+                searchResultsCount={this.props.searchResultsCount}
+                pricingMultiplier={0.004}
+                onPricingLevelSelect={this.props.onPricingLevelSelect} />
             </div>
           </div>
         </div>
