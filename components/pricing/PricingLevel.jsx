@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import jQuery from 'jquery'
+window.jQuery = jQuery
+require('bootstrap')
 import accounting from 'accounting'
 
 export default class PricingLevel extends Component {
@@ -19,9 +22,15 @@ export default class PricingLevel extends Component {
     )
   }
 
+  onClick () {
+    window.jQuery('.contact-modal').modal()
+  }
+
   render () {
     return (
-      <button className='btn btn-primary btn-lg btn-block'>
+      <button
+        className='btn btn-primary btn-lg btn-block'
+        onClick={this.onClick} >
         {this.formattedPrice()}
       </button>
     )
