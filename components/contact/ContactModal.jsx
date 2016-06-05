@@ -8,11 +8,15 @@ export default class ContactModal extends Component {
       <div id='contact-modal' className='modal fade contact-modal' tabindex='-1' role='dialog'>
         <div className='modal-dialog modal-lg'>
           <div className='modal-content'>
+            <div className='modal-header'>
+              <h3>Please provide your contact data</h3>
+            </div>
             <div className='modal-body'>
               <form>
                 <h4>
-                  You have chosen plan for <strong>{this.props.selectedPricing}</strong>.
-                  Please provide your contact data and we will contact you shortly.
+                  You have chosen pricing plan for <strong>{this.props.selectedPricing}</strong>.
+                  Please provide your contact data and we will
+                  reach out to you shortly with further details.
                 </h4>
 
                 <div className='row margin-top-15'>

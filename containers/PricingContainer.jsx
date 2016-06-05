@@ -39,5 +39,6 @@ export default class PricingContainer extends Component {
 }
 
 PricingContainer.propTypes = {
-  searchResultsCount: PropTypes.number.isRequired
+  searchResultsCount: PropTypes.number.isRequired,
+  onPricingLevelSelect: PropTypes.func.isRequired
 }

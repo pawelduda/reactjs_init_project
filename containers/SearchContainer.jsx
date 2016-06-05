@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import SearchInput from '../components/search/SearchInput.jsx'
 import SearchResultsCounter from '../components/search/SearchResultsCounter.jsx'
@@ -18,4 +18,10 @@ export default class SearchContainer extends Component {
       </div>
     )
   }
+}
+
+SearchContainer.PropTypes = {
+  onUserInput: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  searchResultsMessage: PropTypes.string.isRequired
 }

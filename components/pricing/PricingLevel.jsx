@@ -37,5 +37,6 @@ export default class PricingLevel extends Component {
 
 PricingLevel.propTypes = {
   searchResultsCount: PropTypes.number.isRequired,
-  pricingMultiplier: PropTypes.number.isRequired
+  pricingMultiplier: PropTypes.number.isRequired,
+  onPricingLevelSelect: PropTypes.func.isRequired
 }

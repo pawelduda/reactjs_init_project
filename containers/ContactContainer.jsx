@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import ContactModal from '../components/contact/ContactModal.jsx'
 
@@ -10,4 +10,8 @@ export default class ContactContainer extends Component {
       </div>
     )
   }
+}
+
+ContactContainer.PropTypes = {
+  selectedPricing: PropTypes.string.isRequired
 }
