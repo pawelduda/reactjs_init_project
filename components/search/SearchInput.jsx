@@ -20,7 +20,8 @@ export default class SearchInput extends Component {
         <input onChange={this.handleUserInput}
           name='searchPhrase' type='text'
           className='form-control input-lg'
-          placeholder='Start typing to search...' />
+          placeholder='Start typing to search...'
+        />
       </div>
     )
   }

@@ -70,7 +70,8 @@ export default class SearchContainer extends React.Component {
           <SearchInput onUserInput={this.onUserInput} />
           <SearchResultsCounter
             error={this.state.error}
-            searchResultsMessage={this.state.searchResultsMessage} />
+            searchResultsMessage={this.state.searchResultsMessage}
+          />
         </div>
       </div>
     )
