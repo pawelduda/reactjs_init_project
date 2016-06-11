@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class SearchInput extends Component {
+  static propTypes = {
+    onUserInput: PropTypes.func.isRequired
+  }
+
   constructor () {
     super()
 

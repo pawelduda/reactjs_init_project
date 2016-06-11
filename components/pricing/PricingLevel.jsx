@@ -4,7 +4,8 @@ import accounting from 'accounting'
 export default class PricingLevel extends Component {
   static propTypes = {
     searchResultsCount: PropTypes.number.isRequired,
-    pricingMultiplier: PropTypes.number.isRequired
+    pricingMultiplier: PropTypes.number.isRequired,
+    onPricingLevelSelect: PropTypes.func.isRequired
   }
 
   constructor () {
@@ -12,6 +13,7 @@ export default class PricingLevel extends Component {
 
     this.price = this.price.bind(this)
     this.formattedPrice = this.formattedPrice.bind(this)
+    this.handlePricingLevelSelect = this.handlePricingLevelSelect.bind(this)
   }
 
   formattedPrice () {
@@ -24,9 +26,16 @@ export default class PricingLevel extends Component {
     )
   }
 
+  handlePricingLevelSelect () {
+    this.props.onPricingLevelSelect(this.formattedPrice())
+  }
+
   render () {
     return (
-      <button className='btn btn-primary btn-lg btn-block'>
+      <button
+        className='btn btn-primary btn-lg btn-block'
+        onClick={this.handlePricingLevelSelect}
+      >
         {this.formattedPrice()}
       </button>
     )
