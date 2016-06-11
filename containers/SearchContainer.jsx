@@ -27,7 +27,8 @@ export default class SearchContainer extends Component {
     }
 
     this.setState(
-      ...this.defaultState, {
+      {
+        ...this.defaultState,
         searchResultsMessage: '...'
       }
     )
@@ -42,7 +43,8 @@ export default class SearchContainer extends Component {
     const searchResultsCount = response.data.searchInformation.formattedTotalResults
 
     this.setState(
-      ...this.defaultState, {
+      {
+        ...this.defaultState,
         searchResultsMessage: `Search results count: ${searchResultsCount}`,
         searchResultsCount: searchResultsCount
       }
@@ -52,7 +54,8 @@ export default class SearchContainer extends Component {
   handleSearchError (response) {
     if (response.status === 403) {
       this.setState(
-        ...this.defaultState, {
+        {
+          ...this.defaultState,
           error: true,
           searchResultsMessage: 'Google API daily limit exceeded. Try again later.',
           searchResultsCount: Number(searchResultsCount.replace(/,/g, ''))
@@ -60,7 +63,8 @@ export default class SearchContainer extends Component {
       )
     } else {
       this.setState(
-        ...this.defaultState, {
+        {
+          ...this.defaultState,
           error: true,
           searchResultsMessage: 'An error occurred. Try again later.'
         }
