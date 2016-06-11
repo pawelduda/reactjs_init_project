@@ -9,7 +9,7 @@ export default class ContactModal extends Component {
 
   render () {
     return (
-      <div id='contact-modal' className='modal fade contact-modal' tabindex='-1' role='dialog'>
+      <div tabindex='-1' role='dialog'>
         <div className='modal-dialog modal-lg'>
           <div className='modal-content'>
             <div className='modal-header'>

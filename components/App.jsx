@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { debounce } from 'throttle-debounce'
 
-import jQuery from 'jquery'
-window.jQuery = jQuery
-require('bootstrap')
-
 import SearchContainer from '../containers/SearchContainer.jsx'
 import PricingContainer from '../containers/PricingContainer.jsx'
 import ContactContainer from '../containers/ContactContainer.jsx'
@@ -18,7 +14,8 @@ export default class App extends Component {
       searchResultsMessage: '',
       searchResultsCount: 0,
       error: false,
-      selectedPricing: null
+      selectedPricing: null,
+      contactModalIsOpen: false
     }
     this.state = this.defaultState
 
@@ -76,10 +73,9 @@ export default class App extends Component {
   onPricingLevelSelect (selectedPricing) {
     this.setState({
       ...this.defaultState,
-      selectedPricing: selectedPricing
+      selectedPricing: selectedPricing,
+      contactModalIsOpen: true
     })
-
-    window.jQuery('.contact-modal').modal()
   }
 
   render () {
@@ -93,7 +89,10 @@ export default class App extends Component {
           searchResultsCount={this.state.searchResultsCount}
           onPricingLevelSelect={this.onPricingLevelSelect}
         />
-        <ContactContainer selectedPricing={this.state.selectedPricing} />
+        <ContactContainer
+          selectedPricing={this.state.selectedPricing}
+          contactModalIsOpen={this.state.contactModalIsOpen}
+        />
       </div>
     )
   }
