@@ -34,25 +34,29 @@ export default class SearchContainer extends React.Component {
 
     axios
       .get(this.ajaxUrl(searchQuery))
-      .then((response) => {
-        this.setState({
-          error: false,
-          searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`
-        })
+      .then((response) => this.handleSearchSuccess(response))
+      .catch((response) => this.handleSearchError(response))
+  }
+
+  handleSearchSuccess (response) {
+    this.setState({
+      error: false,
+      searchResultsMessage: `Search results count: ${response.data.searchInformation.formattedTotalResults}`
+    })
+  }
+
+  handleSearchError (response) {
+    if (response.status === 403) {
+      this.setState({
+        error: true,
+        searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
       })
-      .catch((response) => {
-        if (response.status === 403) {
-          this.setState({
-            error: true,
-            searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
-          })
-        } else {
-          this.setState({
-            error: true,
-            searchResultsMessage: 'An error occurred. Try again later.'
-          })
-        }
+    } else {
+      this.setState({
+        error: true,
+        searchResultsMessage: 'An error occurred. Try again later.'
       })
+    }
   }
 
   ajaxUrl (searchQuery) {
