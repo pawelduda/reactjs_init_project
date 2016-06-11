@@ -39,7 +39,7 @@ export default class SearchContainer extends Component {
   }
 
   handleSearchSuccess (response) {
-    let searchResultsCount = response.data.searchInformation.formattedTotalResults
+    const searchResultsCount = response.data.searchInformation.formattedTotalResults
 
     this.setState(
       ...this.defaultState, {
