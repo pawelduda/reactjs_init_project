@@ -2,6 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import accounting from 'accounting'
 
 export default class PricingLevel extends Component {
+  static propTypes = {
+    searchResultsCount: PropTypes.number.isRequired,
+    pricingMultiplier: PropTypes.number.isRequired
+  }
+
   constructor () {
     super()
 
@@ -26,9 +31,4 @@ export default class PricingLevel extends Component {
       </button>
     )
   }
-}
-
-PricingLevel.propTypes = {
-  searchResultsCount: PropTypes.number.isRequired,
-  pricingMultiplier: PropTypes.number.isRequired
 }

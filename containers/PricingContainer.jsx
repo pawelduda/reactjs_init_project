@@ -3,6 +3,10 @@ import React, { Component, PropTypes } from 'react'
 import PricingLevel from '../components/pricing/PricingLevel.jsx'
 
 export default class PricingContainer extends Component {
+  static propTypes = {
+    searchResultsCount: PropTypes.number.isRequired
+  }
+
   render () {
     return (
       <div>
@@ -23,8 +27,4 @@ export default class PricingContainer extends Component {
       </div>
     )
   }
-}
-
-PricingContainer.propTypes = {
-  searchResultsCount: PropTypes.number.isRequired
 }
