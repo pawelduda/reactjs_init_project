@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 
 export default class SearchResultsCounter extends Component {
+  static propTypes = {
+    error: PropTypes.bool.isRequired,
+    searchResultsMessage: PropTypes.string.isRequired
+  }
+
   render () {
     return (
       <div>
@@ -10,9 +15,4 @@ export default class SearchResultsCounter extends Component {
       </div>
     )
   }
-}
-
-SearchResultsCounter.propTypes = {
-  error: PropTypes.bool.isRequired,
-  searchResultsMessage: PropTypes.string.isRequired
 }
