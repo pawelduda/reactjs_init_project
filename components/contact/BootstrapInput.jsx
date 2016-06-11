@@ -1,6 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 
 export default class BootstrapInput extends Component {
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+  }
+
   render () {
     return (
       <div>
@@ -9,10 +15,4 @@ export default class BootstrapInput extends Component {
       </div>
     )
   }
-}
-
-BootstrapInput.PropTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
 }

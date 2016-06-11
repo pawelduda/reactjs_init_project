@@ -4,6 +4,12 @@ import SearchInput from '../components/search/SearchInput.jsx'
 import SearchResultsCounter from '../components/search/SearchResultsCounter.jsx'
 
 export default class SearchContainer extends Component {
+  static propTypes = {
+    onUserInput: PropTypes.func.isRequired,
+    error: PropTypes.bool.isRequired,
+    searchResultsMessage: PropTypes.string.isRequired
+  }
+
   render () {
     return (
       <div>
@@ -12,16 +18,11 @@ export default class SearchContainer extends Component {
             <SearchInput onUserInput={this.props.onUserInput} />
             <SearchResultsCounter
               error={this.props.error}
-              searchResultsMessage={this.props.searchResultsMessage} />
+              searchResultsMessage={this.props.searchResultsMessage}
+            />
           </div>
         </div>
       </div>
     )
   }
-}
-
-SearchContainer.PropTypes = {
-  onUserInput: PropTypes.func.isRequired,
-  error: PropTypes.bool.isRequired,
-  searchResultsMessage: PropTypes.string.isRequired
 }

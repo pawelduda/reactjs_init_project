@@ -34,7 +34,8 @@ export default class PricingLevel extends Component {
     return (
       <button
         className='btn btn-primary btn-lg btn-block'
-        onClick={this.handlePricingLevelSelect} >
+        onClick={this.handlePricingLevelSelect}
+      >
         {this.formattedPrice()}
       </button>
     )

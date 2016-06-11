@@ -32,12 +32,10 @@ export default class App extends Component {
       return
     }
 
-    this.setState(
-      {
-        ...this.defaultState,
-        searchResultsMessage: '...'
-      }
-    )
+    this.setState({
+      ...this.defaultState,
+      searchResultsMessage: '...'
+    })
 
     axios
       .get(this.ajaxUrl(searchQuery))
@@ -48,32 +46,26 @@ export default class App extends Component {
   handleSearchSuccess (response) {
     const searchResultsCount = response.data.searchInformation.formattedTotalResults
 
-    this.setState(
-      {
-        ...this.defaultState,
-        searchResultsMessage: `Search results count: ${searchResultsCount}`,
-        searchResultsCount: Number(searchResultsCount.replace(/,/g, ''))
-      }
-    )
+    this.setState({
+      ...this.defaultState,
+      searchResultsMessage: `Search results count: ${searchResultsCount}`,
+      searchResultsCount: Number(searchResultsCount.replace(/,/g, ''))
+    })
   }
 
   handleSearchError (response) {
     if (response.status === 403) {
-      this.setState(
-        {
-          ...this.defaultState,
-          error: true,
-          searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
-        }
-      )
+      this.setState({
+        ...this.defaultState,
+        error: true,
+        searchResultsMessage: 'Google API daily limit exceeded. Try again later.'
+      })
     } else {
-      this.setState(
-        {
-          ...this.defaultState,
-          error: true,
-          searchResultsMessage: 'An error occurred. Try again later.'
-        }
-      )
+      this.setState({
+        ...this.defaultState,
+        error: true,
+        searchResultsMessage: 'An error occurred. Try again later.'
+      })
     }
   }
 
@@ -82,11 +74,10 @@ export default class App extends Component {
   }
 
   onPricingLevelSelect (selectedPricing) {
-    this.setState(
-      ...this.defaultState, {
-        selectedPricing: selectedPricing
-      }
-    )
+    this.setState({
+      ...this.defaultState,
+      selectedPricing: selectedPricing
+    })
 
     window.jQuery('.contact-modal').modal()
   }
@@ -96,12 +87,13 @@ export default class App extends Component {
       <div className='container margin-top-15'>
         <SearchContainer
           onUserInput={this.onUserInput} error={this.state.error}
-          searchResultsMessage={this.state.searchResultsMessage} />
+          searchResultsMessage={this.state.searchResultsMessage}
+        />
         <PricingContainer
           searchResultsCount={this.state.searchResultsCount}
-          onPricingLevelSelect={this.onPricingLevelSelect} />
-        <ContactContainer
-          selectedPricing={this.state.selectedPricing} />
+          onPricingLevelSelect={this.onPricingLevelSelect}
+        />
+        <ContactContainer selectedPricing={this.state.selectedPricing} />
       </div>
     )
   }

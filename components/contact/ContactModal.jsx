@@ -3,6 +3,10 @@ import React, { Component, PropTypes } from 'react'
 import BootstrapInput from './BootstrapInput.jsx'
 
 export default class ContactModal extends Component {
+  static propTypes = {
+    selectedPricing: PropTypes.string
+  }
+
   render () {
     return (
       <div id='contact-modal' className='modal fade contact-modal' tabindex='-1' role='dialog'>
@@ -23,27 +27,31 @@ export default class ContactModal extends Component {
                   <div className='col-md-6'>
                     <BootstrapInput
                       type='text' name='first-name'
-                      label='First Name' />
+                      label='First Name'
+                    />
                   </div>
 
                   <div className='col-md-6'>
                     <BootstrapInput
                       type='text' name='last-name'
-                      label='Last Name' />
+                      label='Last Name'
+                    />
                   </div>
                 </div>
 
                 <div className='margin-top-15'>
                   <BootstrapInput
                     type='email' name='email'
-                    label='Email' />
+                    label='Email'
+                  />
                 </div>
 
                 <div className='row margin-top-15'>
                   <div className='col-md-3 pull-right'>
                     <input
                       type='submit' value='Confirm'
-                      className='btn btn-lg btn-success pull-right' />
+                      className='btn btn-lg btn-success pull-right'
+                    />
                   </div>
                 </div>
               </form>
@@ -53,8 +61,4 @@ export default class ContactModal extends Component {
       </div>
     )
   }
-}
-
-ContactModal.PropTypes = {
-  selectedPricing: PropTypes.string.isRequired
 }
